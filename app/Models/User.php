@@ -46,4 +46,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function matakuliah()
+    {
+        return $this->hasMany(Matakuliah::class);
+    }
 }
