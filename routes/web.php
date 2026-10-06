@@ -32,8 +32,14 @@ Route::prefix('admin') -> name('admin.')->group(function(){
     })->name('dashboard');
 });
 
-Route::prefix('akademik')->name('akademik.')->group(function () {
-    Route::resource('matakuliah', MatakuliahController::class)->only (['index','show','create','store']);
+Route::resource('mahasiswa', MahasiswaController::class);
+
+Route::get('/profil', function (){
+    return view('profil')->with('nama','Ahmad Fauzi')->with('nim','2024010001')->with('prodi','Teknik Informatika');
 });
 
-Route::resource('mahasiswa', MahasiswaController::class);
+Route::get('/akademik/statistik', function () {
+    return view('akademik.statistik');
+});
+
+Route::resource('matakuliah', MatakuliahController::class)->only(['index','show']);
